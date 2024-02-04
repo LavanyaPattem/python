@@ -1,0 +1,534 @@
+1.Task
+Given an integer, , perform the following conditional actions:
+If  is odd, print Weird
+If  is even and in the inclusive range of  to , print Not Weird
+If  is even and in the inclusive range of  to , print Weird
+If  is even and greater than , print Not Weird
+Input Format
+A single line containing a positive integer, .
+Constraints
+Output Format
+Print Weird if the number is weird. Otherwise, print Not Weird.
+SOLUTION:
+import math
+import os
+import random
+import re
+import sys
+if __name__ == '__main__':
+    n = int(input().strip())
+if n % 2 == 1:
+    print("Weird")
+elif n % 2 == 0 and 2 <= n <= 5:
+    print("Not Weird")
+elif n % 2 == 0 and 6 <= n <= 20:
+    print("Weird")
+elif n % 2 == 0 and n > 20:
+    print("Not Weird")
+OUTPUT:
+Not Weird
+
+2.Task
+The provided code stub reads two integers from STDIN,  and . Add code to print three lines where:
+The first line contains the sum of the two numbers.
+The second line contains the difference of the two numbers (first - second).
+The third line contains the product of the two numbers.
+SOLUTION:
+if __name__ == '__main__':
+    a = int(input())
+    b = int(input())
+    print(a+b)
+    print(a-b)
+    print(a*b)
+OUTPUT:
+5
+1
+6
+
+3.Task
+The provided code stub reads and integer, , from STDIN. For all non-negative integers , print .
+SOLUTION:
+if __name__ == '__main__':
+    n = int(input())
+
+for i in range(0, n):
+    print(i**2)
+OUTPUT:
+0
+1
+4
+9
+16
+
+4.Given a year, determine whether it is a leap year. If it is a leap year, return the Boolean True, otherwise return False.
+Note that the code stub provided reads from STDIN and passes arguments to the is_leap function. It is only necessary to complete the is_leap function.
+SOLUTION:
+def is_leap(year):
+    leap = False
+    
+    # Write your logic here
+    if year%4==0 and (year %100 != 0 or year % 400 == 0):
+        return  True
+    else:
+        return False
+year = int(input())
+OUTPUT:
+False
+
+5.Let's learn about list comprehensions! You are given three integers  and  representing the dimensions of a cuboid along with an integer . Print a list of all possible coordinates given by  on a 3D grid where the sum of  is not equal to . Here, . Please use list comprehensions rather than multiple loops, as a learning exercise.
+SOLUTION:
+if __name__ == '__main__':
+    x = int(input())
+    y = int(input())
+    z = int(input())
+    n = int(input()) 
+    coordinates = [[i, j, k] for i in range(x + 1) for j in range(y + 1) for k in range(z + 1) if (i + j + k) != n]
+    print(coordinates)
+OUTPUT:
+[[0, 0, 0], [0, 0, 1], [0, 1, 0], [1, 0, 0], [1,1,1]
+
+6.Given the participants' score sheet for your University Sports Day, you are required to find the runner-up score. You are given  scores. Store them in a list and find the score of the runner-up.
+
+Input Format
+
+The first line contains . The second line contains an array   of  integers each separated by a space.
+SOLUTION:
+if __name__ == '__main__':
+    n = int(input())
+    arr = map(int, input().split())
+    arr1 = set(arr)
+    arr2 = sorted(arr1)
+    print(arr2[-2])
+OUTPUT:
+7.Given the names and grades for each student in a class of  students, store them in a nested list and print the name(s) of any student(s) having the second lowest grade.
+Note: If there are multiple students with the second lowest grade, order their names alphabetically and print each name on a new line.
+Example
+The ordered list of scores is , so the second lowest score is . There are two students with that score: . Ordered alphabetically, the names are printed as:
+alpha
+beta
+SOLUTION:
+if __name__ == '__main__':
+    alist=[]
+    for _ in range(int(input())):
+        name = input()
+        score = float(input())
+        alist.append([name, score])
+second_highest = sorted(set([score for name, score in alist]))[1]
+print('\n'.join(sorted([name for name, score in alist if score == second_highest])))
+OUTPUT:
+Berry
+Harry
+
+8.The provided code stub will read in a dictionary containing key/value pairs of name:[marks] for a list of students. Print the average of the marks array for the student name provided, showing 2 places after the decimal.
+
+Example
+The query_name is 'beta'. beta's average score is .
+
+Input Format
+The first line contains the integer , the number of students' records. The next  lines contain the names and marks obtained by a student, each value separated by a space. The final line contains query_name, the name of a student to query.
+SOLUTION:
+if __name__ == '__main__':
+    n = int(input())
+    student_marks = {}
+    for _ in range(n):
+        name, *line = input().split()
+        scores = list(map(float, line))
+        student_marks[name] = scores
+    query_name = input()
+    l1 = list(student_marks[query_name]) 
+    addition = sum(l1)
+    result = addition/len(l1)
+    print('%.2f'% result)
+OUTPUT:
+56.00
+
+9.Consider a list (list = []). You can perform the following commands:
+
+insert i e: Insert integer  at position .
+print: Print the list.
+remove e: Delete the first occurrence of integer .
+append e: Insert integer  at the end of the list.
+sort: Sort the list.
+pop: Pop the last element from the list.
+reverse: Reverse the list.
+Initialize your list and read in the value of  followed by  lines of commands where each command will be of the  types listed above. Iterate through each command in order and perform the corresponding operation on your list.
+solution:
+if __name__ == '__main__':
+    N = int(input())
+lst=[]
+for i in range(N):
+    command = input().split()
+    if command[0]=='insert':
+        lst.insert(int(command[1]), int(command[2]))
+    elif command[0]=='print':
+        print(lst)
+    elif command[0]=='remove':
+        lst.remove(int(command[1]))
+    elif command[0]=='append':
+        lst.append(int(command[1]))
+    elif command[0]=='sort':
+        lst.sort()
+    elif command[0]=='pop':
+        lst.pop()
+    elif command[0]=='reverse':
+        lst.reverse()
+OUTPUT:
+[6, 5, 10]
+[1, 5, 9, 10]
+[9, 5, 1]
+
+10.You are given a string and your task is to swap cases. In other words, convert all lowercase letters to uppercase letters and vice versa.
+For Example:
+Www.HackerRank.com → wWW.hACKERrANK.COM
+Pythonist 2 → pYTHONIST 2  
+Function Description
+Complete the swap_case function in the editor below.
+swap_case has the following parameters:
+string s: the string to modify
+Returns
+string: the modified string
+Input Format
+A single line containing a string 
+SOLUTION:
+def swap_case(s):
+    return s.swapcase()
+
+if __name__ == '__main__':
+    s = input()
+    result = swap_case(s)
+    print(result)
+OUTPUT:
+hACKERrANK.COM PRESENTS "pYTHONIST 2".
+
+11.You are given the firstname and lastname of a person on two different lines. Your task is to read them and print the following:
+Hello firstname lastname! You just delved into python.
+Function Description
+Complete the print_full_name function in the editor below.
+print_full_name has the following parameters:
+string first: the first name
+string last: the last name
+Prints
+string: 'Hello  ! You just delved into python' where  and  are replaced with  and .
+SOLUTION:
+def print_full_name(first, last):
+    # Write your code here
+    full_name=first+" "+last
+    print("Hello", full_name+ "! You just delved into python.")
+
+if __name__ == '__main__':
+    first_name = input()
+    last_name = input()
+    print_full_name(first_name, last_name)
+OUTPUT:
+Hello Ross Taylor! You just delved into python.
+
+12.In Python, a string can be split on a delimiter.
+Example:
+>>> a = "this is a string"
+>>> a = a.split(" ") # a is converted to a list of strings. 
+>>> print a
+['this', 'is', 'a', 'string']
+Joining a string is simple:
+>>> a = "-".join(a)
+>>> print a
+this-is-a-string 
+Task
+You are given a string. Split the string on a " " (space) delimiter and join using a - hyphen.
+Function Description
+Complete the split_and_join function in the editor below.
+split_and_join has the following parameters:
+string line: a string of space-separated words
+Returns
+string: the resulting string
+Input Format
+The one line contains a string consisting of space separated words.
+Sample Input
+this is a string   
+Sample Output
+this-is-a-string
+SOLUTION:
+
+
+def split_and_join(line):
+    # write your code here
+    words=line.split()
+    return "-".join(words)
+
+if __name__ == '__main__':
+    line = input()
+    result = split_and_join(line)
+    print(result)
+OUTPUT:
+this-is-a-string
+
+13.We have seen that lists are mutable (they can be changed), and tuples are immutable (they cannot be changed).
+Let's try to understand this with an example.
+You are given an immutable string, and you want to make changes to it.
+Example
+>>> string = "abracadabra"
+You can access an index by:
+>>> print string[5]
+a
+What if you would like to assign a value?
+>>> string[5] = 'k' 
+SOLUTION:
+def mutate_string(string, position, character):
+    # return string[:position] + character + string[position+1]
+    string_list = list(string)
+    string_list[position] = character
+    modified_string = ''.join(string_list)
+    
+    return modified_string
+
+if __name__ == '__main__':
+    s = input()
+    i, c = input().split()
+    s_new = mutate_string(s, int(i), c)
+    print(s_new)
+OUTPUT:
+abrackdabra
+14.In this challenge, the user enters a string and a substring. You have to print the number of times that the substring occurs in the given string. String traversal will take place from left to right, not from right to left.
+
+NOTE: String letters are case-sensitive.
+
+Input Format
+
+The first line of input contains the original string. The next line contains the substring.
+
+Constraints
+
+
+Each character in the string is an ascii character.
+
+Output Format
+
+Output the integer number indicating the total number of occurrences of the substring in the original string.
+
+Sample Input
+
+ABCDCDC
+CDC
+Sample Output
+
+2
+SOLUTION:
+def count_substring(string, sub_string):
+    count=0
+    for i in range(0,len(string)):
+        if string[i:i+len(sub_string)] == sub_string:
+            count += 1
+    return count
+if __name__ == '__main__':
+    string = input().strip()
+    sub_string = input().strip()
+    count = count_substring(string, sub_string)
+    print(count)
+OUTPUT:
+2
+
+15.Python has built-in string validation methods for basic data. It can check if a string is composed of alphabetical characters, alphanumeric characters, digits, etc.
+
+str.isalnum()
+This method checks if all the characters of a string are alphanumeric (a-z, A-Z and 0-9).
+
+>>> print 'ab123'.isalnum()
+True
+>>> print 'ab123#'.isalnum()
+False
+str.isalpha()
+This method checks if all the characters of a string are alphabetical (a-z and A-Z).
+
+>>> print 'abcD'.isalpha()
+True
+>>> print 'abcd1'.isalpha()
+False
+str.isdigit()
+This method checks if all the characters of a string are digits (0-9).
+
+>>> print '1234'.isdigit()
+True
+>>> print '123edsd'.isdigit()
+False
+str.islower()
+This method checks if all the characters of a string are lowercase characters (a-z).
+
+>>> print 'abcd123#'.islower()
+True
+>>> print 'Abcd123#'.islower()
+False
+str.isupper()
+This method checks if all the characters of a string are uppercase characters (A-Z).
+
+>>> print 'ABCD123#'.isupper()
+True
+>>> print 'Abcd123#'.isupper()
+False
+Task
+
+You are given a string .
+Your task is to find out if the string  contains: alphanumeric characters, alphabetical characters, digits, lowercase and uppercase characters.
+
+Input Format
+A single line containing a string .
+Output Format
+In the first line, print True if  has any alphanumeric characters. Otherwise, print False.
+In the second line, print True if  has any alphabetical characters. Otherwise, print False.
+In the third line, print True if  has any digits. Otherwise, print False.
+In the fourth line, print True if  has any lowercase characters. Otherwise, print False.
+In the fifth line, print True if  has any uppercase characters. Otherwise, print False.
+SOLUTION:
+if __name__ == '__main__':
+    s = input().strip()
+    
+    has_alnum = has_alpha = has_digit = has_lower = has_upper = False
+    has_alnum = any(c.isalnum() for c in s)
+    has_alpha = any(c.isalpha() for c in s)
+    has_digit = any(c.isdigit() for c in s)
+    has_lower = any(c.islower() for c in s)
+    has_upper = any(c.isupper() for c in s)
+    print(has_alnum)
+    print(has_alpha)
+    print(has_digit)
+    print(has_lower)
+    print(has_upper)
+OUTPUT:
+True
+True
+True
+True
+True
+
+16.In this challenge, the user enters a string and a substring. You have to print the number of times that the substring occurs in the given string. String traversal will take place from left to right, not from right to left.
+NOTE: String letters are case-sensitive.
+Input Format
+The first line of input contains the original string. The next line contains the substring.
+Output Format
+Output the integer number indicating the total number of occurrences of the substring in the original string.
+SOLUTION:
+def count_substring(string, sub_string):
+    count=0
+    for i in range(0,len(string)):
+        if string[i:i+len(sub_string)] == sub_string:
+            count += 1
+    return count
+
+if __name__ == '__main__':
+    string = input().strip()
+    sub_string = input().strip()
+    
+    count = count_substring(string, sub_string)
+    print(count)
+OUTPUT:
+2
+
+17.Task
+Given an integer, , and  space-separated integers as input, create a tuple, , of those  integers. Then compute and print the result of .
+
+Note: hash() is one of the functions in the __builtins__ module, so it need not be imported.
+
+Input Format
+
+The first line contains an integer, , denoting the number of elements in the tuple.
+The second line contains  space-separated integers describing the elements in tuple .
+
+Output Format
+
+Print the result of HASH(T)
+SOLUTION:
+if __name__ == '__main__':
+    n = int(input())
+    integer_list = map(int, input().split())
+    t=tuple(integer_list)    
+    print("hash(t)");
+OUTPUT:
+3713081631934410656
+18.In Python, a string of text can be aligned left, right and center.
+
+.ljust(width)
+
+This method returns a left aligned string of length width.
+
+>>> width = 20
+>>> print 'HackerRank'.ljust(width,'-')
+HackerRank----------  
+.center(width)
+
+This method returns a centered string of length width.
+
+>>> width = 20
+>>> print 'HackerRank'.center(width,'-')
+-----HackerRank-----
+.rjust(width)
+
+This method returns a right aligned string of length width.
+
+>>> width = 20
+>>> print 'HackerRank'.rjust(width,'-')
+----------HackerRank
+Task
+
+You are given a partial code that is used for generating the HackerRank Logo of variable thickness.
+Your task is to replace the blank (______) with rjust, ljust or center.
+SOLUTION:
+thickness = in#t(input()) #This must be an odd number
+c = 'H'
+for i in range(thickness):
+    print((c*i).rjust(thickness-1)+c+(c*i).ljust(thickness-1))
+
+for i in range(thickness+1):  print((c*thickness).center(thickness*2)+(c*thickness).center(thickness*6))
+
+for i in range((thickness+1)//2):
+    print((c*thickness*5).center(thickness*6))    
+
+for i in range(thickness+1): print((c*thickness).center(thickness*2)+(c*thickness).center(thickness*6))    
+
+for i in range(thickness):  print(((c*(thickness-i-1)).rjust(thickness)+c+(c*(thickness-i-1)).ljust(thickness)).rjust(thickness*6))
+OUTPUT:
+H
+   HHH
+  HHHHH
+ HHHHHHH
+HHHHHHHHH
+  HHHHH               HHHHH
+  HHHHH               HHHHH
+  HHHHH               HHHHH
+  HHHHH               HHHHH
+  HHHHH               HHHHH
+  HHHHH               HHHHH
+  HHHHHHHHHHHHHHHHHHHHHHHHH
+  HHHHHHHHHHHHHHHHHHHHHHHHH
+  HHHHHHHHHHHHHHHHHHHHHHHHH
+  HHHHH               HHHHH
+  HHHHH               HHHHH
+  HHHHH               HHHHH
+  HHHHH               HHHHH
+  HHHHH               HHHHH
+  HHHHH               HHHHH{-truncated-}
+
+20.You are given a string  and width .
+Your task is to wrap the string into a paragraph of width .
+Function Description
+Complete the wrap function in the editor below.
+wrap has the following parameters:
+string string: a long string
+int max_width: the width to wrap to
+Returns
+string: a single string with newline characters ('\n') where the breaks should be
+SOLUTION:
+import textwrap
+
+def wrap(string, max_width):
+    return textwrap.fill(string, max_width)
+
+if __name__ == '__main__':
+    string, max_width = input(), int(input())
+    result = wrap(string, max_width)
+    print(result)
+OUTPUT:
+ABCD
+EFGH
+IJKL
+IMNO
+QRST
+UVWX
+YZ
